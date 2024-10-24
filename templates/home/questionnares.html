@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stock Market Fun-o-Meter!</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f0f2f5;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+    
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 15px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+    
+            .container:hover {
+                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+                transform: translateY(-5px);
+            }
+    
+            h1 {
+                text-align: center;
+                color: #2c3e50;
+                font-size: 2.5em;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            }
+    
+            h2 {
+                color: #34495e;
+                font-size: 1.4em;
+                margin-bottom: 15px;
+                position: relative;
+                padding-left: 30px;
+            }
+    
+            h2::before {
+                content: "💡";
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-size: 1.5em;
+            }
+    
+            .question-section {
+                margin-bottom: 30px;
+                background-color: #f9fafc;
+                padding: 15px;
+                border-radius: 10px;
+                border-left: 5px solid #3498db;
+            }
+    
+            label {
+                display: block;
+                margin: 10px 0;
+                font-size: 1.2em;
+                cursor: pointer;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+    
+            label:hover {
+                color: #3498db;
+                transform: translateX(5px);
+            }
+    
+            input[type="radio"] {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin-right: 10px;
+                border: 2px solid #3498db;
+                outline: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease, border-color 0.3s ease;
+                vertical-align: middle;
+            }
+    
+            input[type="radio"]:checked {
+                background-color: #3498db;
+                border-color: #3498db;
+                position: relative;
+            }
+    
+            input[type="radio"]:checked::before {
+                content: "";
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: #fff;
+            }
+    
+            button[type="submit"] {
+                display: block;
+                width: 100%;
+                padding: 15px;
+                font-size: 1.5em;
+                color: #fff;
+                background-color: #3498db;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s, box-shadow 0.3s ease;
+                margin-top: 20px;
+            }
+    
+            button[type="submit"]:hover {
+                background-color: #2980b9;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+    
+            button[type="submit"]:active {
+                background-color: #1f6fa3;
+                transform: translateY(2px);
+            }
+        </style>
+    </head>
+    
+<body>
+    <div class="container">
+        <h1>Stock Market Fun-o-Meter!</h1>
+
+        <form action="{% url 'dashboard' %}" method="GET">
+            <div class="question-section">
+                <h2>🏦 What's Your Money Mission?</h2>
+                <label><input type="radio" name="money-mission" value="Quick Gains">💰 Quick Gains! I’m all about short-term profits.</label>
+                <label><input type="radio" name="money-mission" value="Steady Growth">🏡 Steady Growth. I’m saving for the long haul (retirement, house, etc.).</label>
+                <label><input type="radio" name="money-mission" value="Future Planner">🎓 Future Planner. Saving for education or something special.</label>
+            </div>
+
+            <div class="question-section">
+                <h2>🚀 How Brave Are You on the Stock Rollercoaster?</h2>
+                <label><input type="radio" name="risk-tolerance" value="Conservative">🐢 Conservative – Keep it slow and steady!</label>
+                <label><input type="radio" name="risk-tolerance" value="Moderate">🦉 Moderate – A bit of risk is okay.</label>
+                <label><input type="radio" name="risk-tolerance" value="Aggressive">🦁 Aggressive – Bring on the volatility!</label>
+            </div>
+
+            <div class="question-section">
+                <h2>🎢 Market Fluctuations: Thrill or Chill?</h2>
+                <label><input type="radio" name="market-fluctuations" value="Cool">😎 Cool as a cucumber – I can handle the ups and downs.</label>
+                <label><input type="radio" name="market-fluctuations" value="Uneasy">😬 A bit uneasy – I don’t love the swings but can manage.</label>
+                <label><input type="radio" name="market-fluctuations" value="Nervous">😱 Nervous wreck – I prefer a smooth ride, thank you!</label>
+            </div>
+
+            <div class="question-section">
+                <h2>💵 What's Your Money Mojo?</h2>
+                <label><input type="radio" name="money-mojo" value="High Roller">💼 High Roller – My income’s solid, and I’m ready to invest big.</label>
+                <label><input type="radio" name="money-mojo" value="Budget Balancer">🛍️ Budget Balancer – I’ve got some extra cash after the essentials.</label>
+                <label><input type="radio" name="money-mojo" value="Ramen Life">🍔 Ramen Life – Not much to spare, but I’m ready to invest smartly!</label>
+            </div>
+
+            <div class="question-section">
+                <h2>💳 Debt Load:</h2>
+                <label><input type="radio" name="debt-load" value="Light Luggage">🧳 Light luggage – Not much debt holding me down.</label>
+                <label><input type="radio" name="debt-load" value="Backpacker">🎒 Backpacker – Carrying some, but manageable.</label>
+                <label><input type="radio" name="debt-load" value="Heavy Lifter">🧱 Heavy Lifter – My debt’s a bit of a load.</label>
+            </div>
+
+            <div class="question-section">
+                <h2>💼 Emergency Fund Status:</h2>
+                <label><input type="radio" name="emergency-fund" value="Sunshine Saver">🌞 Sunshine Saver – Got a comfy cushion!</label>
+                <label><input type="radio" name="emergency-fund" value="Cloudy Day Fund">☁️ Cloudy Day Fund – There’s something, but could be better.</label>
+                <label><input type="radio" name="emergency-fund" value="Barely Scraping By">⛈️ Barely Scraping By – Need to build one!</label>
+            </div>
+
+            <div class="question-section">
+                <h2>⏳ How Long Will You Ride This Train?</h2>
+                <label><input type="radio" name="investment-horizon" value="Short Trip">🚄 Short Trip – Just a couple of years.</label>
+                <label><input type="radio" name="investment-horizon" value="Medium Journey">🚂 Medium Journey – 5 to 10 years.</label>
+                <label><input type="radio" name="investment-horizon" value="Long Haul">🛤️ Long Haul – 10+ years, I’m here for the marathon.</label>
+            </div>
+
+            <div class="question-section">
+                <h2>🧩 How Diverse Is Your Investment Puzzle?</h2>
+                <label><input type="radio" name="investment-portfolio" value="Fully Decked">🌈 Fully Decked – Stocks, bonds, and a bit of everything.</label>
+                <label><input type="radio" name="investment-portfolio" value="Greenhorn">🟢 Greenhorn – Mostly just getting started with stocks.</label>
+                <label><input type="radio" name="investment-portfolio" value="Missing Pieces">❓ Missing Pieces – Not sure, need some help here.</label>
+            </div>
+
+            <div class="question-section">
+                <h2>💧 Need Cash on Hand?</h2>
+                <label><input type="radio" name="liquidity-needs" value="Locked & Loaded">🏦 Locked & Loaded – No rush, can let investments grow.</label>
+                <label><input type="radio" name="liquidity-needs" value="Flexible">🔄 Flexible – Might need to pull out occasionally.</label>
+                <label><input type="radio" name="liquidity-needs" value="Emergency Exit">🆘 Emergency Exit – Need easy access to cash just in case.</label>
+            </div>
+
+            <div class="question-section">
+                <h2>💰 How Tax-Savvy Are You?</h2>
+                <label><input type="radio" name="tax-considerations" value="Tax Tactician">🧮 Tax Tactician – I’m all about that tax efficiency!</label>
+                <label><input type="radio" name="tax-considerations" value="Somewhat Informed">🤷‍♂️ Somewhat Informed – I know a bit, but could learn more.</label>
+                <label><input type="radio" name="tax-considerations" value="Taxes?">🙈 Taxes? – Let’s not talk about them…</label>
+            </div>
+
+            <div class="question-section">
+                <h2>📊 Rate Your Stock Market Wizardry (1-10):</h2>
+                <label><input type="radio" name="stock-wizardry" value="1">🧙‍♂️ 1 – Total newbie!</label>
+                <label><input type="radio" name="stock-wizardry" value="5">🛠️ 5 – I know my way around a bit.</label>
+                <label><input type="radio" name="stock-wizardry" value="10">🏆 10 – Market master!</label>
+            </div>
+
+            <div class="question-section">
+                <h2>🌱 Where Do You Stand on Ethical Investing?</h2>
+                <label><input type="radio" name="ethical-investing" value="Absolutely">🌎 Absolutely! I want to invest responsibly.</label>
+                <label><input type="radio" name="ethical-investing" value="Interested">🌿 I’m interested, but not a dealbreaker.</label>
+                <label><input type="radio" name="ethical-investing" value="Secondary">💸 I’m here for the returns, ethics are secondary.</label>
+            </div>
+
+            <div class="question-section">
+                <h2>🕒 What’s Your Life Stage?</h2>
+                <label><input type="radio" name="life-stage" value="Just Starting Out">👶 Just Starting Out – Early in my career.</label>
+                <label><input type="radio" name="life-stage" value="Mid-Career">👨‍💼 Mid-Career – Getting established.</label>
+                <label><input type="radio" name="life-stage" value="Nearing Retirement">🎓 Nearing Retirement – Planning the next chapter.</label>
+                <label><input type="radio" name="life-stage" value="Retired and Relaxing">🛋️ Retired and Relaxing – Time to enjoy the fruits!</label>
+            </div>
+
+            <div class="question-section">
+                <h2>⚖️ How Balanced Are You with Risk?</h2>
+                <label><input type="radio" name="risk-parity" value="Perfectly Balanced">🎯 Perfectly Balanced – I like to balance risk across different investments.</label>
+                <label><input type="radio" name="risk-parity" value="Tilted">🌀 Tilted – I lean more towards either high or low risk.</label>
+                <label><input type="radio" name="risk-parity" value="Riding the Waves">🏄‍♂️ Riding the Waves – I adjust based on the market mood.</label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
